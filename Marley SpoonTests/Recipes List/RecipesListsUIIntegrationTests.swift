@@ -26,10 +26,23 @@ final class LoaderSpy: RecipesListLoader, ImageDataLoader {
     
     // MARK: - ImageDataLoader
     
-    var loadedImageIds = [String]()
+    private var imageRequests = [(id: String, completion: (ImageDataLoader.Result) -> Void)]()
+    
+    var loadedImageIds: [String] {
+        return imageRequests.map { $0.id }
+    }
     
     func loadImageData(forImageId imageId: String, completion: @escaping (ImageDataLoader.Result) -> Void) {
-        loadedImageIds.append(imageId)
+        imageRequests.append((imageId, completion))
+    }
+    
+    func completeImageLoading(with image: UIImage = UIImage(), at index: Int = 0) {
+        imageRequests[index].completion(.success(image))
+    }
+    
+    func completeImageLoadingWithError(at index: Int = 0) {
+        let error = NSError(domain: "an error", code: 0)
+        imageRequests[index].completion(.failure(error))
     }
 }
 
@@ -105,6 +118,26 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageIds, [recipe1.imageId])
     }
     
+    func test_recipeViewLoadingIndicator_isVisibleWhileLoadingImage() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeRecipesLoad(with: [makeRecipe(title: "Another title", imageId: "a id"), makeRecipe(title: "Another title", imageId: "a id")])
+        
+        let view0 = sut.simulateRecipeViewVisible(at: 0)
+        let view1 = sut.simulateRecipeViewVisible(at: 1)
+        XCTAssertEqual(view0?.isShowingImageLoadingIndicator, true)
+        XCTAssertEqual(view1?.isShowingImageLoadingIndicator, true)
+        
+        loader.completeImageLoading(at: 0)
+        XCTAssertEqual(view0?.isShowingImageLoadingIndicator, false)
+        XCTAssertEqual(view1?.isShowingImageLoadingIndicator, true)
+        
+        loader.completeImageLoadingWithError(at: 1)
+        XCTAssertEqual(view0?.isShowingImageLoadingIndicator, false)
+        XCTAssertEqual(view1?.isShowingImageLoadingIndicator, false)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {
@@ -175,6 +208,10 @@ extension RecipesListViewController {
 }
 
 extension RecipeCell {
+    var isShowingImageLoadingIndicator: Bool {
+        return spinner.isAnimating
+    }
+    
     var titleText: String? {
         return recipeTitleLabel.text
     }

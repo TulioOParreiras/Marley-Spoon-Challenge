@@ -43,7 +43,10 @@ public final class RecipesListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecipeCell.self)) as! RecipeCell
         cell.recipeTitleLabel.text = tableModel[indexPath.row].title
         if let imageId = tableModel[indexPath.row].imageId {
-            imageLoader?.loadImageData(forImageId: imageId, completion: { _ in })
+            cell.spinner.startAnimating()
+            imageLoader?.loadImageData(forImageId: imageId, completion: { _ in
+                cell.spinner.stopAnimating()
+            })
         }
         return cell
     }

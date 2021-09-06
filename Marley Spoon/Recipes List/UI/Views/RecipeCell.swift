@@ -9,4 +9,5 @@ import UIKit
 
 final class RecipeCell: UITableViewCell {
     let recipeTitleLabel = UILabel()
+    let spinner = UIActivityIndicatorView()
 }
