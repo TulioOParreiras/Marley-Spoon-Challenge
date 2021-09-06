@@ -33,6 +33,7 @@
 		47A68A6826E690840093074E /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A6726E690840093074E /* WeakRefVirtualProxy.swift */; };
 		47A68A6E26E691070093074E /* RemoteImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A6D26E691070093074E /* RemoteImageDataLoader.swift */; };
 		47A68A7026E6911F0093074E /* RemoteRecipesListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A6F26E6911F0093074E /* RemoteRecipesListLoader.swift */; };
+		47A68A7326E695030093074E /* RecipeDetailsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A7226E695030093074E /* RecipeDetailsUIIntegrationTests.swift */; };
 		6F3871FE594846E376A32C8E /* Pods_Marley_SpoonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */; };
 		FE8960C936555B96C18DD72A /* Pods_Marley_Spoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		47A68A6726E690840093074E /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		47A68A6D26E691070093074E /* RemoteImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataLoader.swift; sourceTree = "<group>"; };
 		47A68A6F26E6911F0093074E /* RemoteRecipesListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRecipesListLoader.swift; sourceTree = "<group>"; };
+		47A68A7226E695030093074E /* RecipeDetailsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley Spoon.debug.xcconfig"; path = "Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon.debug.xcconfig"; sourceTree = "<group>"; };
 		BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.debug.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.release.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				47A68A3F26E685140093074E /* Helpers */,
+				47A68A7126E694E40093074E /* Recipe Details */,
 				47A68A2A26E679DE0093074E /* Recipes List */,
 				47A68A1126E676140093074E /* Info.plist */,
 			);
@@ -297,6 +300,14 @@
 				47A68A6D26E691070093074E /* RemoteImageDataLoader.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		47A68A7126E694E40093074E /* Recipe Details */ = {
+			isa = PBXGroup;
+			children = (
+				47A68A7226E695030093074E /* RecipeDetailsUIIntegrationTests.swift */,
+			);
+			path = "Recipe Details";
 			sourceTree = "<group>";
 		};
 		BB937119A976C29C7B8ECBBF /* Frameworks */ = {
@@ -502,6 +513,7 @@
 			files = (
 				47A68A4826E685DE0093074E /* RecipeCell+Extensions.swift in Sources */,
 				47A68A2C26E679F00093074E /* RecipesListsUIIntegrationTests.swift in Sources */,
+				47A68A7326E695030093074E /* RecipeDetailsUIIntegrationTests.swift in Sources */,
 				47A68A4426E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift in Sources */,
 				47A68A4A26E685FE0093074E /* UIImage+Extensions.swift in Sources */,
 				47A68A4626E685B60093074E /* RecipesListViewController+Extensions.swift in Sources */,
