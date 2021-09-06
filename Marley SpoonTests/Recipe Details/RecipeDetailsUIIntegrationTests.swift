@@ -10,6 +10,7 @@ import Marley_Spoon
 
 final class RecipeDetailsViewController: UIViewController {
     
+    public let imageView = UIImageView()
     public let spinner = UIActivityIndicatorView()
     
     var model: RecipeModel?
@@ -21,8 +22,9 @@ final class RecipeDetailsViewController: UIViewController {
         
         spinner.startAnimating()
         if let imageId = model?.imageId {
-            imageLoader?.loadImageData(forImageId: imageId, completion: { _ in
+            imageLoader?.loadImageData(forImageId: imageId, completion: { result in
                 self.spinner.stopAnimating()
+                self.imageView.image = try? result.get()
             })
         }
     }
@@ -67,6 +69,19 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
         XCTAssertFalse(sut.isShowingImageLoadingIndicator)
     }
     
+    func test_view_rendersImageLoaded() {
+        let model = makeRecipe(imageId: "A id")
+        let (sut, loader) = makeSUT(model: model)
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.renderedImage, .none)
+        let image = UIImage.make(withColor: .red)
+        loader.completeImageLoading(with: image)
+        
+        XCTAssertEqual(sut.renderedImage, image)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
@@ -82,5 +97,9 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
 extension RecipeDetailsViewController {
     var isShowingImageLoadingIndicator: Bool {
         return spinner.isAnimating
+    }
+    
+    var renderedImage: UIImage? {
+        return imageView.image
     }
 }
