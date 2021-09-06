@@ -43,17 +43,14 @@ final class LoaderSpy: RecipesListLoader {
 class RecipesListsUIIntegrationTests: XCTestCase {
 
     func test_view_hasTitle() {
-        let sut = RecipesListViewController()
+        let (sut, _) = makeSUT()
         
         sut.loadViewIfNeeded()
         XCTAssertEqual(sut.title, "Recipes List")
     }
     
     func test_loadRecipesActions_requestRecipesFromLoader() {
-        let loader = LoaderSpy()
-        let sut = RecipesListViewController()
-        sut.recipesLoader = loader
-        
+        let (sut, loader) = makeSUT()
         XCTAssertEqual(loader.loadRecipesCallCount, 0)
         
         sut.loadViewIfNeeded()
@@ -64,6 +61,16 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         
         sut.simulateUserInitiatedRecipesReload()
         XCTAssertEqual(loader.loadRecipesCallCount, 3)
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {
+        let loader = LoaderSpy()
+        let sut = RecipesListViewController()
+        sut.recipesLoader = loader
+        
+        return (sut, loader)
     }
 
 }
