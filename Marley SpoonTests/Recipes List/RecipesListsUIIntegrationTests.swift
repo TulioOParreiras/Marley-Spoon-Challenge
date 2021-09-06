@@ -127,9 +127,7 @@ class RecipesListsUIIntegrationTests: XCTestCase {
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = RecipesListViewController()
-        sut.recipesLoader = loader
-        sut.imageLoader = loader
+        let sut = RecipesListUIComposer.recipesListComposedWith(recipesLoader: loader, imageLoader: loader)
         return (sut, loader)
     }
     
