@@ -123,6 +123,22 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view1?.renderedImage, image1)
     }
     
+    func test_recipeView_preloadsImageIdWhenNearVisible() {
+        let recipe0 = makeRecipe(title: "A title", imageId: "a id")
+        let recipe1 = makeRecipe(title: "Another title", imageId: "a id")
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeRecipesLoad(with: [recipe0, recipe1])
+        XCTAssertEqual(loader.loadedImageIds, [])
+        
+        sut.simulateRecipeViewNearVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageIds, [recipe0.imageId])
+        
+        sut.simulateRecipeViewNearVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageIds, [recipe0.imageId, recipe1.imageId])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {

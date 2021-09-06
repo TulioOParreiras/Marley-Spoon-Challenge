@@ -11,7 +11,7 @@ protocol RecipesListViewControllerDelegate {
     func didRequestListRefresh()
 }
 
-public final class RecipesListViewController: UITableViewController, ListLoadingView {
+public final class RecipesListViewController: UITableViewController, UITableViewDataSourcePrefetching, ListLoadingView {
     var delegate: RecipesListViewControllerDelegate?
     
     var tableModel = [RecipeCellController]() {
@@ -25,6 +25,7 @@ public final class RecipesListViewController: UITableViewController, ListLoading
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.prefetchDataSource = self
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.register(RecipeCell.self, forCellReuseIdentifier: String(describing: RecipeCell.self))
@@ -52,6 +53,16 @@ public final class RecipesListViewController: UITableViewController, ListLoading
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancelCellControllerLoad(forRowAt: indexPath)
+    }
+    
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            tableModel[indexPath.row].preload()
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach(cancelCellControllerLoad)
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
