@@ -9,43 +9,6 @@ import XCTest
 @testable import Marley_Spoon
 import UIKit
 
-final class LoaderSpy: RecipesListLoader, ImageDataLoader {
-    
-    // MARK: - RecipesListLoader
-    
-    var loadRecipesRequests = [(RecipesListLoader.Result) -> Void]()
-    var loadRecipesCallCount: Int { loadRecipesRequests.count }
-    
-    func load(completion: @escaping (RecipesListLoader.Result) -> Void) {
-        loadRecipesRequests.append(completion)
-    }
-    
-    func completeRecipesLoad(with models: [RecipeModel] = [], at index: Int = 0) {
-        loadRecipesRequests[index](.success(models))
-    }
-    
-    // MARK: - ImageDataLoader
-    
-    private var imageRequests = [(id: String, completion: (ImageDataLoader.Result) -> Void)]()
-    
-    var loadedImageIds: [String] {
-        return imageRequests.map { $0.id }
-    }
-    
-    func loadImageData(forImageId imageId: String, completion: @escaping (ImageDataLoader.Result) -> Void) {
-        imageRequests.append((imageId, completion))
-    }
-    
-    func completeImageLoading(with image: UIImage = UIImage(), at index: Int = 0) {
-        imageRequests[index].completion(.success(image))
-    }
-    
-    func completeImageLoadingWithError(at index: Int = 0) {
-        let error = NSError(domain: "an error", code: 0)
-        imageRequests[index].completion(.failure(error))
-    }
-}
-
 class RecipesListsUIIntegrationTests: XCTestCase {
 
     func test_view_hasTitle() {
@@ -208,6 +171,12 @@ extension RecipesListViewController {
     @discardableResult
     func simulateRecipeViewVisible(at index: Int) -> RecipeCell? {
         return recipeView(at: index) as? RecipeCell
+    }
+    
+    func simulateRecipeViewNearVisible(at row: Int) {
+        let ds = tableView.prefetchDataSource
+        let index = IndexPath(row: row, section: recipesSection)
+        ds?.tableView(tableView, prefetchRowsAt: [index])
     }
     
     var isShowingLoadingIndicator: Bool {
