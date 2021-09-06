@@ -36,6 +36,7 @@
 		47A68A7326E695030093074E /* RecipeDetailsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A7226E695030093074E /* RecipeDetailsUIIntegrationTests.swift */; };
 		47A68A7526E695C20093074E /* XCTest+SharedHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A7426E695C20093074E /* XCTest+SharedHelpers.swift */; };
 		47A68A7A26E699E70093074E /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A7926E699E70093074E /* RecipeDetailsViewController.swift */; };
+		47A68A7D26E69A3C0093074E /* RecipeDetailsViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A7C26E69A3C0093074E /* RecipeDetailsViewController+Extensions.swift */; };
 		6F3871FE594846E376A32C8E /* Pods_Marley_SpoonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */; };
 		FE8960C936555B96C18DD72A /* Pods_Marley_Spoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		47A68A7226E695030093074E /* RecipeDetailsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		47A68A7426E695C20093074E /* XCTest+SharedHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+SharedHelpers.swift"; sourceTree = "<group>"; };
 		47A68A7926E699E70093074E /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
+		47A68A7C26E69A3C0093074E /* RecipeDetailsViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeDetailsViewController+Extensions.swift"; sourceTree = "<group>"; };
 		9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley Spoon.debug.xcconfig"; path = "Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon.debug.xcconfig"; sourceTree = "<group>"; };
 		BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.debug.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.release.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		47A68A7126E694E40093074E /* Recipe Details */ = {
 			isa = PBXGroup;
 			children = (
+				47A68A7B26E69A340093074E /* Helpers */,
 				47A68A7226E695030093074E /* RecipeDetailsUIIntegrationTests.swift */,
 			);
 			path = "Recipe Details";
@@ -338,6 +341,14 @@
 				47A68A7926E699E70093074E /* RecipeDetailsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		47A68A7B26E69A340093074E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				47A68A7C26E69A3C0093074E /* RecipeDetailsViewController+Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		BB937119A976C29C7B8ECBBF /* Frameworks */ = {
@@ -544,6 +555,7 @@
 			files = (
 				47A68A4826E685DE0093074E /* RecipeCell+Extensions.swift in Sources */,
 				47A68A2C26E679F00093074E /* RecipesListsUIIntegrationTests.swift in Sources */,
+				47A68A7D26E69A3C0093074E /* RecipeDetailsViewController+Extensions.swift in Sources */,
 				47A68A7326E695030093074E /* RecipeDetailsUIIntegrationTests.swift in Sources */,
 				47A68A4426E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift in Sources */,
 				47A68A7526E695C20093074E /* XCTest+SharedHelpers.swift in Sources */,

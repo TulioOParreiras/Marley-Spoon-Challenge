@@ -106,33 +106,3 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
     }
 
 }
-
-extension RecipeDetailsViewController {
-    var isShowingImageLoadingIndicator: Bool {
-        return spinner.isAnimating
-    }
-    
-    var renderedImage: UIImage? {
-        return imageView.image
-    }
-    
-    var titleText: String? {
-        return titleLabel.text
-    }
-    
-    var caloriesText: String? {
-        return caloriesLabel.text
-    }
-    
-    var chefText: String? {
-        return chefLabel.text
-    }
-    
-    var tagsText: String? {
-        return tagsLabel.text
-    }
-    
-    var descriptionText: String? {
-        return descriptionLabel.text
-    }
-}
