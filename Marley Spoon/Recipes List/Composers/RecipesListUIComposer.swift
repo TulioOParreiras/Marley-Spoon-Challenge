@@ -12,14 +12,15 @@ public final class RecipesListUIComposer {
     
     private init() { }
     
-    public static func recipesListComposedWith(recipesLoader: RecipesListLoader, imageLoader: ImageDataLoader) ->  RecipesListViewController {
+    public static func recipesListComposedWith(recipesLoader: RecipesListLoader, imageLoader: ImageDataLoader, onSelect: @escaping (RecipeModel) -> Void) ->  RecipesListViewController {
         let presentationAdapter = RecipesListPresentationAdapter(recipesLoader: recipesLoader)
         
         let controller = RecipesListViewController(delegate: presentationAdapter)
         controller.title = "Recipes List"
         
         presentationAdapter.presenter = RecipesListPresenter(recipesListView: RecipesListViewAdapter(controller: controller,
-                                                                                                     imageLoader: imageLoader),
+                                                                                                     imageLoader: imageLoader,
+                                                                                                     onSelect: onSelect),
                                                              recipesListLoadingView: controller)
         
         return controller

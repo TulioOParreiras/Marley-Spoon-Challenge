@@ -15,15 +15,21 @@ final class RecipeCellController: RecipeView {
     
     private let delegate: RecipeCellControllerDelegate
     private var cell: RecipeCell?
+    private let onSelect: () -> Void
     
-    init(delegate: RecipeCellControllerDelegate) {
+    init(delegate: RecipeCellControllerDelegate, onSelect: @escaping () -> Void) {
         self.delegate = delegate
+        self.onSelect = onSelect
     }
     
     func view(in tableView: UITableView) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
         delegate.didRequestImage()
         return cell!
+    }
+    
+    func didSelect() {
+        onSelect()
     }
     
     func preload() {

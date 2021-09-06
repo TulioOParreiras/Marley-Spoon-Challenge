@@ -54,6 +54,10 @@ public final class RecipesListViewController: UITableViewController, ListLoading
         cancelCellControllerLoad(forRowAt: indexPath)
     }
     
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableModel[indexPath.row].didSelect()
+    }
+    
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
         tableModel[indexPath.row].cancelLoad()
     }
