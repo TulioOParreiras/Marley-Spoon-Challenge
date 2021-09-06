@@ -13,13 +13,13 @@ public protocol RecipeDetailsViewControllerDelegate {
 
 public final class RecipeDetailsViewController: UIViewController, DetailsView, DetailsImageView, DetailsLoadingView {
     
-    public let imageView = UIImageView()
-    public let titleLabel = UILabel()
-    public let caloriesLabel = UILabel()
-    public let chefLabel = UILabel()
-    public let tagsLabel = UILabel()
-    public let descriptionLabel = UILabel()
-    public let spinner = UIActivityIndicatorView()
+    @IBOutlet private(set) public weak var imageView: UIImageView!
+    @IBOutlet private(set) public weak var titleLabel: UILabel!
+    @IBOutlet private(set) public weak var caloriesLabel: UILabel!
+    @IBOutlet private(set) public weak var chefLabel: UILabel!
+    @IBOutlet private(set) public weak var tagsLabel: UILabel!
+    @IBOutlet private(set) public weak var descriptionLabel: UILabel!
+    @IBOutlet private(set) public weak var spinner: UIActivityIndicatorView!
     
     public var model: RecipeModel?
     public var imageLoader: ImageDataLoader?
