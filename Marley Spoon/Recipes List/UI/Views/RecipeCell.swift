@@ -8,6 +8,7 @@
 import UIKit
 
 final class RecipeCell: UITableViewCell {
+    let recipeImageView = UIImageView()
     let recipeTitleLabel = UILabel()
     let spinner = UIActivityIndicatorView()
 }

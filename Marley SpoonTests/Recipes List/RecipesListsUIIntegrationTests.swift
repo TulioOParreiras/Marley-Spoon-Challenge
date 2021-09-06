@@ -138,6 +138,28 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view1?.isShowingImageLoadingIndicator, false)
     }
     
+    func test_recipeView_rendersImageLoadedFromId() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeRecipesLoad(with: [makeRecipe(title: "Another title", imageId: "a id"), makeRecipe(title: "Another title", imageId: "a id")])
+        
+        let view0 = sut.simulateRecipeViewVisible(at: 0)
+        let view1 = sut.simulateRecipeViewVisible(at: 1)
+        XCTAssertEqual(view0?.renderedImage, .none, "Expected no image for first view while loading first image")
+        XCTAssertEqual(view1?.renderedImage, .none, "Expected no image for second view while loading second image")
+        
+        let image0 = UIImage.make(withColor: .red)
+        loader.completeImageLoading(with: image0, at: 0)
+        XCTAssertEqual(view0?.renderedImage, image0)
+        XCTAssertEqual(view1?.renderedImage, .none, "Expected no image state change for second view once first image loading completes successfully")
+        
+        let image1 = UIImage.make(withColor: .blue)
+        loader.completeImageLoading(with: image1, at: 1)
+        XCTAssertEqual(view0?.renderedImage, image0)
+        XCTAssertEqual(view1?.renderedImage, image1)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {
@@ -214,5 +236,22 @@ extension RecipeCell {
     
     var titleText: String? {
         return recipeTitleLabel.text
+    }
+    
+    var renderedImage: UIImage? {
+        return recipeImageView.image
+    }
+}
+
+extension UIImage {
+    static func make(withColor color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
     }
 }

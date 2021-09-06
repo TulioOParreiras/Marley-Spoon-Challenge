@@ -44,7 +44,8 @@ public final class RecipesListViewController: UITableViewController {
         cell.recipeTitleLabel.text = tableModel[indexPath.row].title
         if let imageId = tableModel[indexPath.row].imageId {
             cell.spinner.startAnimating()
-            imageLoader?.loadImageData(forImageId: imageId, completion: { _ in
+            imageLoader?.loadImageData(forImageId: imageId, completion: { result in
+                cell.recipeImageView.image = try? result.get()
                 cell.spinner.stopAnimating()
             })
         }
