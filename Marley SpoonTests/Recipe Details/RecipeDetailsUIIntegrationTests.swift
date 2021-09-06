@@ -27,7 +27,7 @@ final class RecipeDetailsViewController: UIViewController {
 final class RecipeDetailsUIIntegrationTests: XCTestCase {
     
     func test_view_hasTitle() {
-        let sut = RecipeDetailsViewController()
+        let (sut, _) = makeSUT()
         
         sut.loadViewIfNeeded()
         XCTAssertEqual(sut.title, "Recipe Details")
@@ -35,15 +35,22 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
     
     func test_loadImageActions_requestImageFromLoader() {
         let model = makeRecipe(imageId: "A id")
-        let loader = LoaderSpy()
-        let sut = RecipeDetailsViewController()
-        sut.model = model
-        sut.imageLoader = loader
+        let (sut, loader) = makeSUT(model: model)
         
         XCTAssertEqual(loader.loadedImageIds, [])
         
         sut.loadViewIfNeeded()
         XCTAssertEqual(loader.loadedImageIds, [model.imageId])
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
+        let loader = LoaderSpy()
+        let sut = RecipeDetailsViewController()
+        sut.model = model
+        sut.imageLoader = loader
+        return (sut, loader)
     }
 
 }
