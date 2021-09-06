@@ -6,41 +6,8 @@
 //
 
 import XCTest
-
+@testable import Marley_Spoon
 import UIKit
-
-final class RecipesListViewController: UITableViewController {
-    
-    var recipesLoader: RecipesListLoader?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        title = "Recipes List"
-        refresh()
-    }
-    
-    @objc
-    private func refresh() {
-        display(isLoading: true)
-        recipesLoader?.load {
-            _ in
-            self.display(isLoading: false)
-        }
-    }
-    
-    func display(isLoading: Bool) {
-        isLoading ? refreshControl?.beginRefreshing() : refreshControl?.endRefreshing()
-    }
-    
-}
-
-protocol RecipesListLoader {
-    typealias Result = Swift.Result<Void, Error>
-    
-    func load(completion: @escaping (Result) -> Void)
-}
 
 final class LoaderSpy: RecipesListLoader {
     var loadRecipesRequests = [(RecipesListLoader.Result) -> Void]()
