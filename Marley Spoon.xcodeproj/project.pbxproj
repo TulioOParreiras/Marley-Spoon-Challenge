@@ -11,6 +11,8 @@
 		47A689FB26E676110093074E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A689FA26E676110093074E /* SceneDelegate.swift */; };
 		47A68A0226E676140093074E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47A68A0126E676140093074E /* Assets.xcassets */; };
 		47A68A0526E676140093074E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A68A0326E676140093074E /* LaunchScreen.storyboard */; };
+		6F3871FE594846E376A32C8E /* Pods_Marley_SpoonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */; };
+		FE8960C936555B96C18DD72A /* Pods_Marley_Spoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +26,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marley_SpoonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0949C097588A9BFC760BF988 /* Pods-Marley Spoon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley Spoon.release.xcconfig"; path = "Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon.release.xcconfig"; sourceTree = "<group>"; };
+		1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marley_Spoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A689F526E676110093074E /* Marley Spoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marley Spoon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A689F826E676110093074E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47A689FA26E676110093074E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +37,9 @@
 		47A68A0626E676140093074E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47A68A0B26E676140093074E /* Marley SpoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marley SpoonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A68A1126E676140093074E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley Spoon.debug.xcconfig"; path = "Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon.debug.xcconfig"; sourceTree = "<group>"; };
+		BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.debug.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.release.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8960C936555B96C18DD72A /* Pods_Marley_Spoon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,18 +55,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F3871FE594846E376A32C8E /* Pods_Marley_SpoonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0513957B2EFF5CA9C2BDEC6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */,
+				0949C097588A9BFC760BF988 /* Pods-Marley Spoon.release.xcconfig */,
+				BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */,
+				E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		47A689EC26E676110093074E = {
 			isa = PBXGroup;
 			children = (
 				47A689F726E676110093074E /* Marley Spoon */,
 				47A68A0E26E676140093074E /* Marley SpoonTests */,
 				47A689F626E676110093074E /* Products */,
+				0513957B2EFF5CA9C2BDEC6F /* Pods */,
+				BB937119A976C29C7B8ECBBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +114,15 @@
 			path = "Marley SpoonTests";
 			sourceTree = "<group>";
 		};
+		BB937119A976C29C7B8ECBBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */,
+				0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A68A1F26E676140093074E /* Build configuration list for PBXNativeTarget "Marley Spoon" */;
 			buildPhases = (
+				7CBD42A584034FA25047CF06 /* [CP] Check Pods Manifest.lock */,
 				47A689F126E676110093074E /* Sources */,
 				47A689F226E676110093074E /* Frameworks */,
 				47A689F326E676110093074E /* Resources */,
+				BCFA292389DCC0368FD290D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -114,6 +149,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A68A2226E676140093074E /* Build configuration list for PBXNativeTarget "Marley SpoonTests" */;
 			buildPhases = (
+				A3D708611423CACE6EF179B3 /* [CP] Check Pods Manifest.lock */,
 				47A68A0726E676140093074E /* Sources */,
 				47A68A0826E676140093074E /* Frameworks */,
 				47A68A0926E676140093074E /* Resources */,
@@ -184,6 +220,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CBD42A584034FA25047CF06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Marley Spoon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3D708611423CACE6EF179B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Marley SpoonTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCFA292389DCC0368FD290D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		47A689F126E676110093074E /* Sources */ = {
@@ -342,6 +442,7 @@
 		};
 		47A68A2026E676140093074E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -360,6 +461,7 @@
 		};
 		47A68A2126E676140093074E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0949C097588A9BFC760BF988 /* Pods-Marley Spoon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -378,6 +480,7 @@
 		};
 		47A68A2326E676140093074E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -401,6 +504,7 @@
 		};
 		47A68A2426E676140093074E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

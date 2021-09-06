@@ -1,0 +1,24 @@
+PODS:
+  - Contentful (9.9.9):
+    - Contentful/ImageOptions (= 9.9.9)
+  - Contentful/ImageOptions (9.9.9)
+
+DEPENDENCIES:
+  - "Contentful (from `git@github.com:TulioOParreiras/contentful.swift.git`, branch `feature/make-response-public`)"
+
+EXTERNAL SOURCES:
+  Contentful:
+    :branch: feature/make-response-public
+    :git: "git@github.com:TulioOParreiras/contentful.swift.git"
+
+CHECKOUT OPTIONS:
+  Contentful:
+    :commit: 1746e7c0b1d56e1f70dbf17dd47f2a02b23bc732
+    :git: "git@github.com:TulioOParreiras/contentful.swift.git"
+
+SPEC CHECKSUMS:
+  Contentful: 746126aa303fff5766199d2c2c43a005716e7dd5
+
+PODFILE CHECKSUM: 542244f105f93ec2df571f458a428d75af114dca
+
+COCOAPODS: 1.10.2
