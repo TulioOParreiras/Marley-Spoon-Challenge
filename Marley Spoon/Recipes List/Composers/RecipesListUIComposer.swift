@@ -21,7 +21,7 @@ public final class RecipesListUIComposer {
         presentationAdapter.presenter = RecipesListPresenter(recipesListView: RecipesListViewAdapter(controller: controller,
                                                                                                      imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader),
                                                                                                      onSelect: onSelect),
-                                                             recipesListLoadingView: controller)
+                                                             recipesListLoadingView: WeakRefVirtualProxy(controller))
         
         return controller
     }

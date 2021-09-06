@@ -26,7 +26,7 @@ final class RecipesListViewAdapter: RecipesListView {
                                                 onSelect(model)
                                             })
             
-            adapter.presenter = RecipePresenter(view: view)
+            adapter.presenter = RecipePresenter(view: WeakRefVirtualProxy(view))
             return view
         }
     }
