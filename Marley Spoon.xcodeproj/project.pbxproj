@@ -19,6 +19,7 @@
 		47A68A3E26E6824E0093074E /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A3D26E6824E0093074E /* ImageDataLoader.swift */; };
 		47A68A4126E6851A0093074E /* LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A4026E6851A0093074E /* LoaderSpy.swift */; };
 		47A68A4426E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A4326E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift */; };
+		47A68A4626E685B60093074E /* RecipesListViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A4526E685B60093074E /* RecipesListViewController+Extensions.swift */; };
 		6F3871FE594846E376A32C8E /* Pods_Marley_SpoonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */; };
 		FE8960C936555B96C18DD72A /* Pods_Marley_Spoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		47A68A3D26E6824E0093074E /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 		47A68A4026E6851A0093074E /* LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderSpy.swift; sourceTree = "<group>"; };
 		47A68A4326E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesListsUIIntegrationTests+Extensions.swift"; sourceTree = "<group>"; };
+		47A68A4526E685B60093074E /* RecipesListViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesListViewController+Extensions.swift"; sourceTree = "<group>"; };
 		9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley Spoon.debug.xcconfig"; path = "Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon.debug.xcconfig"; sourceTree = "<group>"; };
 		BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.debug.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.release.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				47A68A4326E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift */,
+				47A68A4526E685B60093074E /* RecipesListViewController+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			files = (
 				47A68A2C26E679F00093074E /* RecipesListsUIIntegrationTests.swift in Sources */,
 				47A68A4426E6854C0093074E /* RecipesListsUIIntegrationTests+Extensions.swift in Sources */,
+				47A68A4626E685B60093074E /* RecipesListViewController+Extensions.swift in Sources */,
 				47A68A4126E6851A0093074E /* LoaderSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
