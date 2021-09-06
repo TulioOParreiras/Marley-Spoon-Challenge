@@ -111,9 +111,11 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
+    private func makeSUT(model: RecipeModel = makeRecipe(), file: StaticString = #file, line: UInt = #line) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
         let sut = RecipeDetailsUIComposer.recipeDetailsComposedWith(imageLoader: loader, recipeModel: model)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(loader, file: file, line: line)
         return (sut, loader)
     }
 

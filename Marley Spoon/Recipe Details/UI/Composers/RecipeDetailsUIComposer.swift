@@ -16,10 +16,12 @@ public final class RecipeDetailsUIComposer {
         let controller = RecipeDetailsViewController(delegate: interactor)
         controller.title = "Recipe Details"
         
+        let weakfyController = WeakRefVirtualProxy(controller)
+        
         interactor.presenter = RecipeDetailsPresenter(recipeModel: recipeModel,
-                                                      recipeDetailsView: controller,
-                                                      recipeImageView: controller,
-                                                      recipeLoadingView: controller)
+                                                      recipeDetailsView: weakfyController,
+                                                      recipeImageView: weakfyController,
+                                                      recipeLoadingView: weakfyController)
         
         return controller
     }

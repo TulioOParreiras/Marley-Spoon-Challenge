@@ -188,11 +188,5 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         trackForMemoryLeaks(loader, file: file, line: line)
         return (sut, loader)
     }
-    
-    private func trackForMemoryLeaks(_ object: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak object] in
-            XCTAssertNil(object, "The objet \(String(describing: object)) should have been deallocated from memory", file: file, line: line)
-        }
-    }
 
 }
