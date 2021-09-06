@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol RecipesListLoader {
-    typealias Result = Swift.Result<Void, Error>
+    typealias Result = Swift.Result<[RecipeModel], Error>
     
     func load(completion: @escaping (Result) -> Void)
 }

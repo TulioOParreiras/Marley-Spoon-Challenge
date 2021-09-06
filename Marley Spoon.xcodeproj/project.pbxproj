@@ -14,6 +14,8 @@
 		47A68A2C26E679F00093074E /* RecipesListsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A2B26E679F00093074E /* RecipesListsUIIntegrationTests.swift */; };
 		47A68A3126E67CD70093074E /* RecipesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A3026E67CD70093074E /* RecipesListViewController.swift */; };
 		47A68A3426E67CE90093074E /* RecipesListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A3326E67CE90093074E /* RecipesListLoader.swift */; };
+		47A68A3826E67D4F0093074E /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A3726E67D4F0093074E /* RecipeModel.swift */; };
+		47A68A3B26E680AB0093074E /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A68A3A26E680AB0093074E /* RecipeCell.swift */; };
 		6F3871FE594846E376A32C8E /* Pods_Marley_SpoonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163ED8D037CF0ABE1922290 /* Pods_Marley_SpoonTests.framework */; };
 		FE8960C936555B96C18DD72A /* Pods_Marley_Spoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9E62BBB6A5B4CF2AF4A5A6 /* Pods_Marley_Spoon.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +45,8 @@
 		47A68A2B26E679F00093074E /* RecipesListsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		47A68A3026E67CD70093074E /* RecipesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewController.swift; sourceTree = "<group>"; };
 		47A68A3326E67CE90093074E /* RecipesListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListLoader.swift; sourceTree = "<group>"; };
+		47A68A3726E67D4F0093074E /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		47A68A3A26E680AB0093074E /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		9368AD26A882FD038575E757 /* Pods-Marley Spoon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley Spoon.debug.xcconfig"; path = "Target Support Files/Pods-Marley Spoon/Pods-Marley Spoon.debug.xcconfig"; sourceTree = "<group>"; };
 		BE7ECA13D7F7D87012819DFC /* Pods-Marley SpoonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.debug.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E066E22763B79778F18C68C6 /* Pods-Marley SpoonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marley SpoonTests.release.xcconfig"; path = "Target Support Files/Pods-Marley SpoonTests/Pods-Marley SpoonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 		47A689F726E676110093074E /* Marley Spoon */ = {
 			isa = PBXGroup;
 			children = (
+				47A68A3526E67D460093074E /* Shared */,
 				47A68A2D26E67CCC0093074E /* Recipes List */,
 				47A689F826E676110093074E /* AppDelegate.swift */,
 				47A689FA26E676110093074E /* SceneDelegate.swift */,
@@ -141,6 +146,7 @@
 		47A68A2E26E67CD00093074E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				47A68A3926E680A50093074E /* Views */,
 				47A68A2F26E67CD20093074E /* Controllers */,
 			);
 			path = UI;
@@ -160,6 +166,30 @@
 				47A68A3326E67CE90093074E /* RecipesListLoader.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		47A68A3526E67D460093074E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				47A68A3626E67D480093074E /* Model */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		47A68A3626E67D480093074E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47A68A3726E67D4F0093074E /* RecipeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47A68A3926E680A50093074E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				47A68A3A26E680AB0093074E /* RecipeCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BB937119A976C29C7B8ECBBF /* Frameworks */ = {
@@ -340,6 +370,8 @@
 			files = (
 				47A68A3426E67CE90093074E /* RecipesListLoader.swift in Sources */,
 				47A689F926E676110093074E /* AppDelegate.swift in Sources */,
+				47A68A3826E67D4F0093074E /* RecipeModel.swift in Sources */,
+				47A68A3B26E680AB0093074E /* RecipeCell.swift in Sources */,
 				47A689FB26E676110093074E /* SceneDelegate.swift in Sources */,
 				47A68A3126E67CD70093074E /* RecipesListViewController.swift in Sources */,
 			);
