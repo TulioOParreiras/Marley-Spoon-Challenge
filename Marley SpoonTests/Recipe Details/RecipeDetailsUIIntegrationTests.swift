@@ -11,6 +11,11 @@ import Marley_Spoon
 final class RecipeDetailsViewController: UIViewController {
     
     public let imageView = UIImageView()
+    public let titleLabel = UILabel()
+    public let caloriesLabel = UILabel()
+    public let chefLabel = UILabel()
+    public let tagsLabel = UILabel()
+    public let descriptionLabel = UILabel()
     public let spinner = UIActivityIndicatorView()
     
     var model: RecipeModel?
@@ -27,6 +32,13 @@ final class RecipeDetailsViewController: UIViewController {
                 self.imageView.image = try? result.get()
             })
         }
+        
+        guard let model = model else { return }
+        titleLabel.text = model.title
+        caloriesLabel.text = "Calories: \(model.calories)"
+        chefLabel.text = "Chef: -"
+        tagsLabel.text = "Tags: -"
+        descriptionLabel.text = model.description
     }
     
 }
@@ -82,6 +94,18 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.renderedImage, image)
     }
     
+    func test_loadView_rendersSuccessfullyRecipeDetails_withIncompleteRecipe() {
+        let model = makeRecipe()
+        let (sut, _) = makeSUT(model: model)
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.titleText, model.title)
+        XCTAssertEqual(sut.caloriesText, "Calories: \(model.calories)")
+        XCTAssertEqual(sut.chefText, "Chef: -")
+        XCTAssertEqual(sut.tagsText, "Tags: -")
+        XCTAssertEqual(sut.descriptionText, model.description)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
@@ -101,5 +125,25 @@ extension RecipeDetailsViewController {
     
     var renderedImage: UIImage? {
         return imageView.image
+    }
+    
+    var titleText: String? {
+        return titleLabel.text
+    }
+    
+    var caloriesText: String? {
+        return caloriesLabel.text
+    }
+    
+    var chefText: String? {
+        return chefLabel.text
+    }
+    
+    var tagsText: String? {
+        return tagsLabel.text
+    }
+    
+    var descriptionText: String? {
+        return descriptionLabel.text
     }
 }
