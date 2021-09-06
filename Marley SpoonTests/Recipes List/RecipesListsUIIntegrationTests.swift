@@ -139,20 +139,6 @@ class RecipesListsUIIntegrationTests: XCTestCase {
 
 }
 
-extension RecipeCell {
-    var isShowingImageLoadingIndicator: Bool {
-        return spinner.isAnimating
-    }
-    
-    var titleText: String? {
-        return recipeTitleLabel.text
-    }
-    
-    var renderedImage: UIImage? {
-        return recipeImageView.image
-    }
-}
-
 extension UIImage {
     static func make(withColor color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
