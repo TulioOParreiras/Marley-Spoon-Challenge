@@ -36,8 +36,8 @@ final class RecipeDetailsViewController: UIViewController {
         guard let model = model else { return }
         titleLabel.text = model.title
         caloriesLabel.text = "Calories: \(model.calories)"
-        chefLabel.text = "Chef: -"
-        tagsLabel.text = "Tags: -"
+        chefLabel.text = "Chef: " + (model.chefName ?? "-")
+        tagsLabel.text = "Tags: " + (model.tags?.first ?? "-")
         descriptionLabel.text = model.description
     }
     
@@ -103,6 +103,18 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.caloriesText, "Calories: \(model.calories)")
         XCTAssertEqual(sut.chefText, "Chef: -")
         XCTAssertEqual(sut.tagsText, "Tags: -")
+        XCTAssertEqual(sut.descriptionText, model.description)
+    }
+    
+    func test_loadView_rendersSuccessfullyRecipeDetails_withOneTag() {
+        let model = makeRecipe(tags: ["A tag"], chefName: "A chef")
+        let (sut, _) = makeSUT(model: model)
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.titleText, model.title)
+        XCTAssertEqual(sut.caloriesText, "Calories: \(model.calories)")
+        XCTAssertEqual(sut.chefText, "Chef: \(model.chefName!)")
+        XCTAssertEqual(sut.tagsText, "Tags: A tag")
         XCTAssertEqual(sut.descriptionText, model.description)
     }
     
