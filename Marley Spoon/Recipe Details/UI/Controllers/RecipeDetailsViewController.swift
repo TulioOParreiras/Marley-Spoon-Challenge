@@ -7,7 +7,11 @@
 
 import UIKit
 
-public final class RecipeDetailsViewController: UIViewController {
+public protocol RecipeDetailsViewControllerDelegate {
+    func didRequestLoadImage()
+}
+
+public final class RecipeDetailsViewController: UIViewController, DetailsView, DetailsImageView, DetailsLoadingView {
     
     public let imageView = UIImageView()
     public let titleLabel = UILabel()
@@ -20,32 +24,32 @@ public final class RecipeDetailsViewController: UIViewController {
     public var model: RecipeModel?
     public var imageLoader: ImageDataLoader?
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Recipe Details"
-        
-        spinner.startAnimating()
-        if let imageId = model?.imageId {
-            imageLoader?.loadImageData(forImageId: imageId, completion: { result in
-                self.spinner.stopAnimating()
-                self.imageView.image = try? result.get()
-            })
-        }
-        
-        guard let model = model else { return }
-        titleLabel.text = model.title
-        caloriesLabel.text = "Calories: \(model.calories)"
-        chefLabel.text = "Chef: " + (model.chefName ?? "-")
-        tagsLabel.text = tagsText(fromTags: model.tags)
-        descriptionLabel.text = model.description
+    public var delegate: RecipeDetailsViewControllerDelegate?
+    
+    public convenience init(delegate: RecipeDetailsViewControllerDelegate) {
+        self.init()
+        self.delegate = delegate
     }
     
-    private func tagsText(fromTags tags: [String]?) -> String {
-        guard let tags = tags, !tags.isEmpty else { return "Tags: -" }
-        var tagsText = tags.reduce("", { return $0 + $1 + ", " })
-        tagsText.removeLast()
-        tagsText.removeLast()
-        return "Tags: " + tagsText
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.didRequestLoadImage()
+    }
+    
+    func display(isLoading: Bool) {
+        isLoading ? spinner.startAnimating() : spinner.stopAnimating()
+    }
+    
+    func display(image: UIImage?) {
+        imageView.image = image
+    }
+
+    func display(_ viewModel: RecipeDetailsViewModel) {
+        titleLabel.text = viewModel.title
+        caloriesLabel.text = viewModel.calories
+        chefLabel.text = viewModel.chef
+        tagsLabel.text = viewModel.tags
+        descriptionLabel.text = viewModel.description
     }
     
 }

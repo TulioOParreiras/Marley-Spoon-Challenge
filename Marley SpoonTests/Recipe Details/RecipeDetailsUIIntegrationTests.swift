@@ -99,9 +99,7 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
     
     private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = RecipeDetailsViewController()
-        sut.model = model
-        sut.imageLoader = loader
+        let sut = RecipeDetailsUIComposer.recipeDetailsComposedWith(imageLoader: loader, recipeModel: model)
         return (sut, loader)
     }
 
