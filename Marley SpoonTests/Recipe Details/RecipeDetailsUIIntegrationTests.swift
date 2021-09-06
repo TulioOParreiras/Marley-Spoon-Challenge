@@ -95,6 +95,20 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.descriptionText, model.description)
     }
     
+    func test_loadImageDataCompletion_dispatchesFromBackgroundToMainThread() {
+        let (sut, loader) = makeSUT(model: makeRecipe(imageId: "A id"))
+        
+        sut.loadViewIfNeeded()
+        
+        let exp = expectation(description: "Wait for background queue")
+        DispatchQueue.global().async {
+            let image = UIImage.make(withColor: .red)
+            loader.completeImageLoading(with: image)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
