@@ -43,6 +43,14 @@ final class RecipeDetailsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageIds, [model.imageId])
     }
     
+    func test_loadImageActions_doesNotRequestImageFromLoader_forNilImageId() {
+        let model = makeRecipe()
+        let (sut, loader) = makeSUT(model: model)
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(loader.loadedImageIds, [])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(model: RecipeModel = makeRecipe()) -> (sut: RecipeDetailsViewController, loader: LoaderSpy) {
