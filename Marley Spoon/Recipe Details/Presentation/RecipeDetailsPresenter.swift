@@ -28,6 +28,8 @@ protocol DetailsImageView {
 }
 
 final class RecipeDetailsPresenter {
+    static let title = "Recipe Details"
+    
     private var recipeModel: RecipeModel
     private let recipeDetailsView: DetailsView
     private let recipeImageView: DetailsImageView

@@ -16,6 +16,8 @@ protocol ListLoadingView {
 }
 
 final class RecipesListPresenter {
+    static let title = "Recipes List"
+    
     private let recipesListView: RecipesListView
     private let recipesListLoadingView: ListLoadingView
     

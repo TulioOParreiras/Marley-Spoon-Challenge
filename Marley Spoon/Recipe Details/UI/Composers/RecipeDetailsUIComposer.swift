@@ -14,7 +14,7 @@ public final class RecipeDetailsUIComposer {
         let interactor = RecipeDetailsPresentationAdapter(imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader), imageId: recipeModel.imageId)
         
         let controller = RecipeDetailsViewController(delegate: interactor)
-        controller.title = "Recipe Details"
+        controller.title = RecipeDetailsPresenter.title
         
         let weakfyController = WeakRefVirtualProxy(controller)
         
