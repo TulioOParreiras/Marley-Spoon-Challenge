@@ -139,6 +139,18 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageIds, [recipe0.imageId, recipe1.imageId])
     }
     
+    func test_recipeView_doesNotRenderLoadedImageWhenNotVisibleAnymore() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeRecipesLoad(with: [makeRecipe(title: "Another title", imageId: "a id")])
+
+        let view = sut.simulateRecipeViewNotVisible(at: 0)
+        let image0 = UIImage.make(withColor: .red)
+        loader.completeImageLoading(with: image0)
+        
+        XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {

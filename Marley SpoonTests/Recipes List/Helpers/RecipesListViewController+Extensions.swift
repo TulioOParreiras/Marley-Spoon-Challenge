@@ -18,6 +18,17 @@ extension RecipesListViewController {
         return recipeView(at: index) as? RecipeCell
     }
     
+    @discardableResult
+    func simulateRecipeViewNotVisible(at row: Int) -> RecipeCell? {
+        let view = simulateRecipeViewVisible(at: row)
+        
+        let delegate = tableView.delegate
+        let index = IndexPath(row: row, section: recipesSection)
+        delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
+        
+        return view
+    }
+    
     func simulateRecipeViewNearVisible(at row: Int) {
         let ds = tableView.prefetchDataSource
         let index = IndexPath(row: row, section: recipesSection)
