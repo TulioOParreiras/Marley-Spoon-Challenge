@@ -10,6 +10,7 @@ import UIKit
 public final class RecipesListViewController: UITableViewController {
     
     public var recipesLoader: RecipesListLoader?
+    public var imageLoader: ImageDataLoader?
     private var tableModel = [RecipeModel]() { didSet { tableView.reloadData() }}
     
     public override func viewDidLoad() {
@@ -41,6 +42,9 @@ public final class RecipesListViewController: UITableViewController {
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecipeCell.self)) as! RecipeCell
         cell.recipeTitleLabel.text = tableModel[indexPath.row].title
+        if let imageId = tableModel[indexPath.row].imageId {
+            imageLoader?.loadImageData(forImageId: imageId, completion: { _ in })
+        }
         return cell
     }
     

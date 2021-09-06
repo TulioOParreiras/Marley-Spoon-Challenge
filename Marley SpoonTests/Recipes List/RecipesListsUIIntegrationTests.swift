@@ -9,7 +9,10 @@ import XCTest
 @testable import Marley_Spoon
 import UIKit
 
-final class LoaderSpy: RecipesListLoader {
+final class LoaderSpy: RecipesListLoader, ImageDataLoader {
+    
+    // MARK: - RecipesListLoader
+    
     var loadRecipesRequests = [(RecipesListLoader.Result) -> Void]()
     var loadRecipesCallCount: Int { loadRecipesRequests.count }
     
@@ -19,6 +22,14 @@ final class LoaderSpy: RecipesListLoader {
     
     func completeRecipesLoad(with models: [RecipeModel] = [], at index: Int = 0) {
         loadRecipesRequests[index](.success(models))
+    }
+    
+    // MARK: - ImageDataLoader
+    
+    var loadedImageIds = [String]()
+    
+    func loadImageData(forImageId imageId: String, completion: @escaping (ImageDataLoader.Result) -> Void) {
+        loadedImageIds.append(imageId)
     }
 }
 
@@ -77,13 +88,30 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         assertThat(sut, isRendering: [recipe0, recipe1])
     }
     
+    func test_recipeView_loadsImageIdWhenVisible() {
+        let recipe0 = makeRecipe(title: "A title", imageId: nil)
+        let recipe1 = makeRecipe(title: "Another title", imageId: "a id")
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeRecipesLoad(with: [recipe0, recipe1])
+        
+        XCTAssertEqual(loader.loadedImageIds, [])
+
+        sut.simulateRecipeViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageIds, [])
+        
+        sut.simulateRecipeViewVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageIds, [recipe1.imageId])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
         let sut = RecipesListViewController()
         sut.recipesLoader = loader
-        
+        sut.imageLoader = loader
         return (sut, loader)
     }
     
@@ -120,6 +148,11 @@ extension RecipesListsUIIntegrationTests {
 extension RecipesListViewController {
     func simulateUserInitiatedRecipesReload() {
         refreshControl?.sendActions(for: .valueChanged)
+    }
+    
+    @discardableResult
+    func simulateRecipeViewVisible(at index: Int) -> RecipeCell? {
+        return recipeView(at: index) as? RecipeCell
     }
     
     var isShowingLoadingIndicator: Bool {
