@@ -23,20 +23,35 @@ final class RecipesListViewController: UITableViewController {
     
     @objc
     private func refresh() {
-        recipesLoader?.load()
+        display(isLoading: true)
+        recipesLoader?.load {
+            _ in
+            self.display(isLoading: false)
+        }
+    }
+    
+    func display(isLoading: Bool) {
+        isLoading ? refreshControl?.beginRefreshing() : refreshControl?.endRefreshing()
     }
     
 }
 
 protocol RecipesListLoader {
-    func load()
+    typealias Result = Swift.Result<Void, Error>
+    
+    func load(completion: @escaping (Result) -> Void)
 }
 
 final class LoaderSpy: RecipesListLoader {
-    var loadRecipesCallCount: Int = 0
+    var loadRecipesRequests = [(RecipesListLoader.Result) -> Void]()
+    var loadRecipesCallCount: Int { loadRecipesRequests.count }
     
-    func load() {
-        loadRecipesCallCount += 1
+    func load(completion: @escaping (RecipesListLoader.Result) -> Void) {
+        loadRecipesRequests.append(completion)
+    }
+    
+    func completeRecipesLoad(at index: Int = 0) {
+        loadRecipesRequests[index](.success(()))
     }
 }
 
@@ -63,6 +78,22 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadRecipesCallCount, 3)
     }
     
+    func test_loadingRecipesIndicator_isVisibleWhileLoadingRecipes() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertTrue(sut.isShowingLoadingIndicator)
+        
+        loader.completeRecipesLoad(at: 0)
+        XCTAssertFalse(sut.isShowingLoadingIndicator)
+        
+        sut.simulateUserInitiatedRecipesReload()
+        XCTAssertTrue(sut.isShowingLoadingIndicator)
+        
+        loader.completeRecipesLoad(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> (sut: RecipesListViewController, loader: LoaderSpy) {
@@ -78,5 +109,9 @@ class RecipesListsUIIntegrationTests: XCTestCase {
 extension RecipesListViewController {
     func simulateUserInitiatedRecipesReload() {
         refreshControl?.sendActions(for: .valueChanged)
+    }
+    
+    var isShowingLoadingIndicator: Bool {
+        refreshControl?.isRefreshing ?? false
     }
 }
