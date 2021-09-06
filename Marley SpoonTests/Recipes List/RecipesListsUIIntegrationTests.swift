@@ -139,30 +139,6 @@ class RecipesListsUIIntegrationTests: XCTestCase {
 
 }
 
-extension RecipesListsUIIntegrationTests {
-
-    func assertThat(_ sut: RecipesListViewController, isRendering recipes: [RecipeModel], file: StaticString = #file, line: UInt = #line) {
-        guard sut.numberOfRenderedRecipeViews() == recipes.count else {
-            return XCTFail("Expected \(recipes.count) images, got \(sut.numberOfRenderedRecipeViews()) instead.", file: file, line: line)
-        }
-        
-        recipes.enumerated().forEach { index, recipe in
-            assertThat(sut, hasViewConfiguredFor: recipe, at: index, file: file, line: line)
-        }
-    }
-    
-    func assertThat(_ sut: RecipesListViewController, hasViewConfiguredFor recipe: RecipeModel, at index: Int, file: StaticString = #file, line: UInt = #line) {
-        let view = sut.recipeView(at: index)
-        
-        guard let cell = view as? RecipeCell else {
-            return XCTFail("Expected \(RecipeCell.self) instance, got \(String(describing: view)) instead", file: file, line: line)
-        }
-        
-        XCTAssertEqual(cell.titleText, recipe.title, file: file, line: line)
-    }
-    
-}
-
 extension RecipesListViewController {
     func simulateUserInitiatedRecipesReload() {
         refreshControl?.sendActions(for: .valueChanged)

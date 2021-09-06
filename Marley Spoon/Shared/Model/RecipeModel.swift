@@ -8,10 +8,19 @@
 import Foundation
 
 public struct RecipeModel {
-    let title: String
-    let description: String
-    let calories: Int
-    let tags: [String]?
-    let imageId: String?
-    let chefName: String?
+    public let title: String
+    public let description: String
+    public let calories: Int
+    public let tags: [String]?
+    public let imageId: String?
+    public let chefName: String?
+    
+    internal init(title: String, description: String, calories: Int, tags: [String]?, imageId: String?, chefName: String?) {
+        self.title = title
+        self.description = description
+        self.calories = calories
+        self.tags = tags
+        self.imageId = imageId
+        self.chefName = chefName
+    }
 }

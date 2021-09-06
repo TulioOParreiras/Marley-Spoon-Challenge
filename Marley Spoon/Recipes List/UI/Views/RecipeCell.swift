@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class RecipeCell: UITableViewCell {
-    let recipeImageView = UIImageView()
-    let recipeTitleLabel = UILabel()
-    let spinner = UIActivityIndicatorView()
+public final class RecipeCell: UITableViewCell {
+    public let recipeImageView = UIImageView()
+    public let recipeTitleLabel = UILabel()
+    public let spinner = UIActivityIndicatorView()
 }
