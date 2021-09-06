@@ -16,7 +16,7 @@ public final class RecipesListUIComposer {
         let presentationAdapter = RecipesListPresentationAdapter(recipesLoader: MainQueueDispatchDecorator(decoratee: recipesLoader))
         
         let controller = RecipesListViewController(delegate: presentationAdapter)
-        controller.title = "Recipes List"
+        controller.title = RecipesListPresenter.title
         
         presentationAdapter.presenter = RecipesListPresenter(recipesListView: RecipesListViewAdapter(controller: controller,
                                                                                                      imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader),

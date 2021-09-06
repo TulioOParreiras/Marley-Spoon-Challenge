@@ -15,7 +15,7 @@ public struct RecipeModel {
     public let imageId: String?
     public let chefName: String?
     
-    internal init(title: String, description: String, calories: Int, tags: [String]?, imageId: String?, chefName: String?) {
+    public init(title: String, description: String, calories: Int, tags: [String]?, imageId: String?, chefName: String?) {
         self.title = title
         self.description = description
         self.calories = calories

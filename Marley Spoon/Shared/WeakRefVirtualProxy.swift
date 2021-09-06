@@ -26,3 +26,21 @@ extension WeakRefVirtualProxy: RecipeView where T: RecipeView {
         object?.display(model)
     }
 }
+
+extension WeakRefVirtualProxy: DetailsView where T: DetailsView {
+    func display(_ viewModel: RecipeDetailsViewModel) {
+        object?.display(viewModel)
+    }
+}
+
+extension WeakRefVirtualProxy: DetailsLoadingView where T: DetailsLoadingView {
+    func display(isLoading: Bool) {
+        object?.display(isLoading: isLoading)
+    }
+}
+
+extension WeakRefVirtualProxy: DetailsImageView where T: DetailsImageView {
+    func display(image: UIImage?) {
+        object?.display(image: image)
+    }
+}

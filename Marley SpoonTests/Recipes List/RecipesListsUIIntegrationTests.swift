@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Marley_Spoon
+import Marley_Spoon
 import UIKit
 
 class RecipesListsUIIntegrationTests: XCTestCase {
@@ -187,16 +187,6 @@ class RecipesListsUIIntegrationTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(loader, file: file, line: line)
         return (sut, loader)
-    }
-    
-    private func makeRecipe(title: String, description: String = "A desription", calories: Int = 100, tags: [String]? = nil, imageId: String? = nil, chefName: String? = nil) -> RecipeModel {
-        RecipeModel(title: title, description: description, calories: calories, tags: tags, imageId: imageId, chefName: chefName)
-    }
-    
-    private func trackForMemoryLeaks(_ object: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak object] in
-            XCTAssertNil(object, "The objet \(String(describing: object)) should have been deallocated from memory", file: file, line: line)
-        }
     }
 
 }

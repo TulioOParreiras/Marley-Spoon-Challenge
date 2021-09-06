@@ -36,8 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func onSelect(_ model: RecipeModel) {
-        let detailsController = UIViewController()
-        detailsController.view.backgroundColor = .red
+        let detailsController = RecipeDetailsUIComposer.recipeDetailsComposedWith(imageLoader: imageLoader, recipeModel: model)
         (self.window?.rootViewController as? UINavigationController)?.pushViewController(detailsController, animated: true)
      }
 
